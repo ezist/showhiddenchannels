@@ -1,7 +1,7 @@
 {
 	"name": "ShowHiddenChannels",
 	"description": "A port of the BetterDiscord plugin to Powercord.",
-	"author": "Anonymous",
+	"author": "ezist#7571",
 	"version": "1.0.0",
-	"license": "CC0"
+	"license": "ISC"
 }
