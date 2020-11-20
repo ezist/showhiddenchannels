@@ -17,10 +17,10 @@
 		"no-cond-assign": ["error", "except-parens"],
 
 		"object-property-newline": ["error", { "allowAllPropertiesOnSameLine": true }],
-		"array-bracket-spacing": ["error", "never", { "singleValue": true }],
 
 		"no-tabs": "off",
 		"prefer-const": "off",
+		"array-bracket-spacing": "off",
 		"one-var-declaration-per-line": "off"
 	}
 }
