@@ -1,0 +1,26 @@
+{
+	"env": {
+		"commonjs": true,
+		"es2021": true,
+		"node": true
+	},
+	"extends": "eslint:recommended",
+	"parserOptions": { "ecmaVersion": 12 },
+	"rules": {
+		"no-eval": [ "error" ],
+		"no-implied-eval": [ "error" ],
+		"no-useless-escape": [ "warn" ],
+
+		"indent": ["warn", "tab"],
+		"curly": ["error", "multi"],
+		"semi": ["error", "never"],
+		"no-cond-assign": ["error", "except-parens"],
+
+		"object-property-newline": ["error", { "allowAllPropertiesOnSameLine": true }],
+		"array-bracket-spacing": ["error", "never", { "singleValue": true }],
+
+		"no-tabs": "off",
+		"prefer-const": "off",
+		"one-var-declaration-per-line": "off"
+	}
+}
