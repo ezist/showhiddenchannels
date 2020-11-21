@@ -1,5 +1,5 @@
 const { Plugin } = require('powercord/entities')
-const { getModule, constants: { Permissions } } = require('powercord/webpack')
+const { getModule, constants: { Permissions, ChannelTypes } } = require('powercord/webpack')
 
 module.exports = class ShowHiddenChannels extends Plugin {
 	async import (filter, functionName = filter) {
@@ -15,13 +15,12 @@ module.exports = class ShowHiddenChannels extends Plugin {
 		await this.import('getChannel')
 		await this.import(['getGuildId', 'getLastSelectedGuildId'], 'getGuildId')
 		await this.import('getChannelPermissions')
-		await this.import(['Permissions', 'ActivityTypes'], 'ChannelTypes')
 	}
 
 	async startPlugin () {
 		await this.doImport()
 		this.hiddenChannelCache = {}
-		this._makeChannelLine = v => `   ${v.type === this.ChannelTypes.GUILD_VOICE ? 'VC - ' : ''}#${v.name}${v.nsfw ? ' - NSFW' : ''}\n`
+		this._makeChannelLine = v => `   ${v.type === ChannelTypes.GUILD_VOICE ? 'VC - ' : ''}#${v.name}${v.nsfw ? ' - NSFW' : ''}\n`
 		this._positionSort = (a, b) => a.position < b.position ? -1 : (a.position > b.position ? 1 : 0)
 		powercord.api.commands.registerCommand({
 			command: 'hiddenchannels',
@@ -73,7 +72,7 @@ module.exports = class ShowHiddenChannels extends Plugin {
 		if (this.hiddenChannelCache[guild.id] && this.hiddenChannelCache[guild.id].roles === roles)
 			return [this.hiddenChannelCache[guild.id].hidden, this.hiddenChannelCache[guild.id].amount]
 		let all = this.getGuildChannels(), hidden = {}, amount = 0
-		for (let type in this.ChannelTypes) hidden[this.ChannelTypes[type]] = []
+		for (let type in ChannelTypes) hidden[ChannelTypes[type]] = []
 		for (let channel_id in all) {
 			let channel = all[channel_id]
 			if (channel.guild_id === guild.id && channel.type !== (4 || 1) && !this._hasPermission(Permissions.VIEW_CHANNEL, channel.id)) {
