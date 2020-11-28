@@ -4,7 +4,7 @@
 		"no-implied-eval": [ "error" ],
 		"no-useless-escape": [ "warn" ],
 
-		"indent": ["warn", "tab"],
+		"indent": ["warn", 2],
 		"curly": ["error", "multi"],
 		"semi": ["error", "never"],
 		"no-cond-assign": ["error", "except-parens"],
