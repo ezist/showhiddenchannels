@@ -92,8 +92,8 @@ module.exports = class ShowHiddenChannels extends Plugin {
   _isHiddenChannel (channelId) {
     let channel = this.getChannel(channelId)
     return channel &&
-			this.hiddenChannelCache[channel.guild_id] &&
-			this.hiddenChannelCache[channel.guild_id].hidden[channel.type] &&
-			this.hiddenChannelCache[channel.guild_id].hidden[channel.type].find(c => c.id === channel.id)
+      this.hiddenChannelCache[channel.guild_id] &&
+      this.hiddenChannelCache[channel.guild_id].hidden[channel.type] &&
+      this.hiddenChannelCache[channel.guild_id].hidden[channel.type].find(c => c.id === channel.id)
   }
 }
