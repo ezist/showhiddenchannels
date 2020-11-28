@@ -10,6 +10,7 @@
 		"no-cond-assign": ["error", "except-parens"],
 
 		"object-property-newline": ["error", { "allowAllPropertiesOnSameLine": true }],
+		"brace-style": ["error", "1tbs", { "allowSingleLine": true }],
 
 		"no-tabs": "off",
 		"prefer-const": "off",

@@ -19,9 +19,6 @@ module.exports = class ShowHiddenChannels extends Plugin {
 
   async startPlugin () {
     await this.doImport()
-    this.hiddenChannelCache = {}
-    this._makeChannelLine = v => `   ${v.type === ChannelTypes.GUILD_VOICE ? 'VC - ' : ''}#${v.name}${v.nsfw ? ' - NSFW' : ''}\n`
-    this._positionSort = (a, b) => a.position < b.position ? -1 : (a.position > b.position ? 1 : 0)
     powercord.api.commands.registerCommand({
       command: 'hiddenchannels',
       description: 'Show hidden channels for the current guild',
@@ -62,9 +59,11 @@ module.exports = class ShowHiddenChannels extends Plugin {
     })
   }
 
-  pluginWillUnload () {
-    powercord.api.commands.unregisterCommand('hiddenchannels')
-  }
+  pluginWillUnload () { powercord.api.commands.unregisterCommand('hiddenchannels') }
+
+  _makeChannelLine (v) { return `   ${v.type === ChannelTypes.GUILD_VOICE ? 'VC - ' : ''}#${v.name}${v.nsfw ? ' - NSFW' : ''}\n` }
+
+  _positionSort (a, b) { return a.position < b.position ? -1 : (a.position > b.position ? 1 : 0) }
 
   _getHiddenChannels (guild) {
     if (!guild) return [{}, 0]
