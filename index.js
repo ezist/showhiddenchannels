@@ -19,6 +19,7 @@ module.exports = class ShowHiddenChannels extends Plugin {
 
   async startPlugin () {
     await this.doImport()
+    this.hiddenChannelCache = {}
     powercord.api.commands.registerCommand({
       command: 'hiddenchannels',
       description: 'Show hidden channels for the current guild',
